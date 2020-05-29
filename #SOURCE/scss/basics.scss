@@ -1,0 +1,208 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,*:before,*:after {
+  box-sizing: border-box;
+}
+html,body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  font-size: 16px;
+  min-width: 320px;
+}
+
+main,nav,footer,header,aside, details {
+  display: block;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+b, strong {
+  font-weight: bolder;
+}
+small {
+  font-size: 80%;
+}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+textarea {
+  overflow: auto;
+}
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1;
+}
+button, input {
+  overflow: visible;
+  color: inherit;
+}
+button, select {
+  text-transform: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button {
+  display: none;
+}
+input::-ms-clear {
+  display: none;
+}
+input[type='file']::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+summary {
+  display: list-item;
+}
+template {
+  display: none;
+}
+[hidden] {
+  display: none;
+}
+ul,ol {
+  list-style: none;
+}
+button {
+  -webkit-appearance: button;
+  background: none;
+  cursor: pointer;
+  &:disabled {
+    cursor: no-drop;
+  }
+}
+input::placeholder {
+  color:inherit;
+}
+a {
+  text-decoration: none;
+  text-align: center;
+  color: inherit;
+  display: inline-block;
+  vertical-align: top;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+._img {
+  overflow: hidden;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.lock {
+  overflow: hidden;
+}
+
+.burger {
+  display: none;
+  z-index: 50;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  width: 40px;
+  height: 30px;
+  &:before, &:after {
+    content: '';
+    transform-origin: right;
+  }
+  &:before, &:after, & span {
+    background-color: black;
+    position:absolute;right:0;left:0;
+    height: 2px;
+    transition: transform 0.5s;
+  }
+  &:before {top: 0;}
+  &:after {bottom: 0;}
+  & span {top: calc(50% - 1px);}
+  &._active {
+    span {transform: translateX(101%);}
+    &:before {transform: rotate(-45deg);}
+    &:after {transform: rotate(45deg);}
+  }
+}
+.menu ul{
+  display: flex;
+}
+
+@media (max-width: $wm) {
+  .burger {display: block;}
+  .menu {
+    background: rgba(#fff, 0.8);
+    position: fixed;bottom:0;top:0;left:0;right:0;
+    visibility:hidden;opacity:0;
+    overflow: auto;
+    transition: 0.5s;
+    ul {
+      padding-top: 50px;
+      flex-direction: column;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+      width: 100%;
+    }
+    li {
+      width: 100%;
+    }
+    a {
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      font-size: 20px;
+    }
+    &._active {      
+      visibility:visible;opacity:1;
+      ul{transform: translateY(0);}
+    }
+  }
+}
+
+@mixin fs($desctopSize, $mobileSize) {
+  @media (min-width: $wc * 1.08) {
+    font-size: $desctopSize / ($wc * 1.08 / 100px) + vw;
+    //font-size: $desctopSize + px;
+  }
+  @media (max-width: $wc * 1.08) {
+    $addSize: $desctopSize - $mobileSize;
+    $maxWidth: $wc * 1.08 / 1px - 320;
+    font-size: calc(#{$mobileSize + px} + #{$addSize} * (100vw - 320px) / #{$maxWidth});
+  }
+}

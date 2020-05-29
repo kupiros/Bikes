@@ -1,0 +1,48 @@
+
+//------------------------------ПЕРВОНАЧАЛЬНЫЕ НАСТРОЙКИ-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//переменные
+$wc: 1480px; //стандартная ширина контейнера
+$wm: 767px;//ширина мобилок
+
+
+
+//шрифты (юзай fff)
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2'), url('../fonts/Roboto-Regular.woff') format('woff'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2'), url('../fonts/Roboto-Bold.woff') format('woff'), url('../fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Italic.woff2') format('woff2'), url('../fonts/Roboto-Italic.woff') format('woff'), url('../fonts/Roboto-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+//вруби теперь шрифт этот
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #848789;
+  background-color: #f7f7f7;
+}
+
+
+
+
+
+
+
+
+
+
+//------------------------------НЕ ТРОГАТЬ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@import 'basics';
+@import '_IMPORTS';
+@import '_UI';
